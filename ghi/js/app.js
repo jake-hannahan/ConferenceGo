@@ -11,6 +11,14 @@ function createCard(name, description, pictureUrl, date, locationName) {
         </div>
     `;
 }
+function error(status) {
+    return `
+        <div class="alert alert-warning" role="alert">
+            Bad response (${status}) warning alert—check it out!
+        </div>
+    `;
+}
+
 
 window.addEventListener('DOMContentLoaded', async () => {
 
@@ -20,12 +28,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch(url);
 
         if (!response.ok) {
-            const column = document.getElementsById("col1");
-            html = `
-            <div class="alert alert-warning" role="alert">
-                Bad response warning alert—check it out!
-            </div>
-            `;
+            let column = document.querySelector(".col");
+            let html = error(response.status);
             column.innerHTML += html;
         } else {
             const data = await response.json();
@@ -59,12 +63,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         }
     } catch (e) {
-        const column = document.getElementsById("col1");
-        html = `
-            <div class="alert alert-warning" role="alert">
-                ERROR warning alert—check it out!
-            </div>
-        `;
+        const column = document.querySelector(".col");
+        const html = error(e.status);
         column.innerHTML += html;
     }
 
