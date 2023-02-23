@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch(url);
     if (response.ok) {
         const data = await response.json();
-        console.log(data);
+
         const locationSelect = document.getElementById("location");
         for (const location of data.locations) {
             const option = document.createElement('option');
