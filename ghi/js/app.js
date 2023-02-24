@@ -42,7 +42,6 @@ window.addEventListener('DOMContentLoaded', async () => {
                 if (count > 3) {
                     count -= 3;
                 }
-                console.log(count);
                 if (detailResponse.ok) {
                     const details = await detailResponse.json();
 
