@@ -26,9 +26,10 @@ if (payloadCookie) {
   // If it is, remove 'd-none' from the link
    //console.log(payload.user.perms);
     if (payload.user.perms.includes("events.add_conference")) {
-        console.log('works');
         const conferenceLink = document.getElementById("conference-link");
         conferenceLink.classList.remove('d-none');
+    }
+    if (payload.user.perms.includes("events.add_location")) {
         const locationLink = document.getElementById("location-link");
         locationLink.classList.remove('d-none');
     }
