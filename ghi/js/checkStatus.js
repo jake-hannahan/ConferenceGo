@@ -1,5 +1,5 @@
 // Get the cookie out of the cookie store
-console.log(document.cookie);
+// console.log(document.cookie);
 const payloadCookie = document.cookie
     .split("; ")
     .find((row) => row.startsWith("jwt_access_payload="))
@@ -24,7 +24,7 @@ if (payloadCookie) {
 
   // Check if "events.add_conference" is in the permissions.
   // If it is, remove 'd-none' from the link
-   //console.log(payload.user.perms);
+    console.log(payload);
     if (payload.user.perms.includes("events.add_conference")) {
         const conferenceLink = document.getElementById("conference-link");
         conferenceLink.classList.remove('d-none');
@@ -33,6 +33,8 @@ if (payloadCookie) {
         const locationLink = document.getElementById("location-link");
         locationLink.classList.remove('d-none');
     }
+    const loginLink = document.getElementById("login-link");
+    loginLink.classList.add('d-none');
 
   // Check if "events.add_location" is in the permissions.
   // If it is, remove 'd-none' from the link
