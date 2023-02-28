@@ -1,5 +1,5 @@
 import Nav from './Nav';
-
+// import ConferenceList from './ConferenceList';
 
 function App(props) {
   if (props.attendees === undefined) {
@@ -7,12 +7,13 @@ function App(props) {
   }
     return (
       <>
-      <Nav />
+        <Nav />
+
         <div className="container">
           <table className="table table-striped">
             <thead>
               <tr>
-                <th>Name</th>
+                <th>Attendee Name</th>
                 <th>Conference</th>
               </tr>
             </thead>

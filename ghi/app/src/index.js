@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import Conference from './ConferenceList';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
+    <Conference />
   </React.StrictMode>
 );
 
@@ -30,5 +32,25 @@ async function loadAttendees() {
   } else {
     console.error(response);
   }
-}
+};
+
 loadAttendees();
+
+// async function loadConferences() {
+//   const conferenceResponse = await fetch('http://localhost:8000/api/conferences/');
+
+//   if (conferenceResponse.ok) {
+//     const conferenceData = await conferenceResponse.json();
+//     console.log(conferenceData);
+//     root.render(
+//       <React.StrictMode>
+//         <Conference conferences={conferenceData.conferences} />
+//       </React.StrictMode>
+//     )
+//   } else {
+//     console.error(conferenceResponse);
+//   }
+
+// }
+
+// loadConferences();
