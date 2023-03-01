@@ -6,15 +6,21 @@ function AttendConferenceForm() {
     const [email, setEmail] = useState('');
     const [conference, setConference] = useState('');
 
-    let successClasses = "alert alert-success d-none mb-0";
-    let formClasses = "";
-    let submitBool = false;
-    let spinnerClasses = "d-flex justify-content-center mb-3";
-    let dropdownClasses = "form-select d-none";
-    if (conferences.length > 0) {
-        spinnerClasses = "d-flex justify-content-center mb-3 d-none";
-        dropdownClasses = "form-select"
-    }
+    const [submitBool, setSubmitBool] = useState(false);
+
+    const fetchData = async () => {
+      const url = 'http://localhost:8000/api/conferences/';
+      const response = await fetch(url);
+
+      if (response.ok) {
+          const data = await response.json();
+          setConferencers(data.conferences);
+      }
+  }
+
+  useEffect(() => {
+      fetchData();
+  }, []);
 
     const handleNameChange = (event) => {
         const value = event.target.value;
@@ -50,11 +56,10 @@ function AttendConferenceForm() {
         const response = await fetch(attendeeUrl, fetchConfig);
         if (response.ok) {
             const newAttendee = await response.json();
-            submitBool = true;
-            console.log(submitBool === true);
-            // setName('');
-            // setEmail('');
-            // setConference('');
+            setName('');
+            setEmail('');
+            setConference('');
+            setSubmitBool(true);
             if (submitBool === true) {
                 formClasses = "d-none";
                 console.log(formClasses);
@@ -63,24 +68,16 @@ function AttendConferenceForm() {
         }
     }
 
+    let successClasses = (!submitBool) ? "alert alert-success d-none mb-0" : "alert alert-success mb-0";
+    let formClasses = (!submitBool) ? "" : "d-none";
 
+    let spinnerClasses = "d-flex justify-content-center mb-3";
+    let dropdownClasses = "form-select d-none";
 
-
-    const fetchData = async () => {
-        const url = 'http://localhost:8000/api/conferences/';
-        const response = await fetch(url);
-
-        if (response.ok) {
-            const data = await response.json();
-            setConferencers(data.conferences);
-        }
+    if (conferences.length > 0) {
+        spinnerClasses = "d-flex justify-content-center mb-3 d-none";
+        dropdownClasses = "form-select"
     }
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-
 
     return (
     <div className="my-5">
