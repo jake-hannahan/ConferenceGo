@@ -2,7 +2,9 @@ import Nav from './Nav';
 import AttendeesList from './AttendeesList';
 import LocationForm from './LocationForm';
 import ConferenceForm from './ConferenceForm';
-import AttendConferenceForm from './AttendConference';
+import AttendConferenceForm from './AttendConferenceForm';
+import PresentationForm from './PresentationForm';
+import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 
 
 function App(props) {
@@ -10,15 +12,18 @@ function App(props) {
     return null;
   }
     return (
-      <>
-        <Nav />
-        <div className="container">
-          <AttendConferenceForm />
-          {/* <ConferenceForm /> */}
-          {/* <LocationForm /> */}
-          {/* <AttendeesList attendees={props.attendees}/> */}
-        </div>
-      </>
+      <BrowserRouter>
+          <Nav />
+          <div className="container">
+            <Routes>
+              <Route path="conferences/new" element={<ConferenceForm />} />
+              <Route path="attendees/new" element={<AttendConferenceForm />} />
+              <Route path="locations/new" element={<LocationForm />} />
+              <Route path="presentations/new" element={<PresentationForm />} />
+              <Route path="attendees" element={<AttendeesList attendees={props.attendees}/>} />
+            </Routes>
+          </div>
+      </BrowserRouter>
     );
 }
 
