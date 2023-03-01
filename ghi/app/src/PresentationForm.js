@@ -49,12 +49,14 @@ function PresentationForm () {
     const response = await fetch(url, fetchConfig);
 
     if (response.ok) {
-      setPresenterName("");
-      setPresenterEmail("");
-      setCompanyName("");
-      setTitle("");
-      setSynopsis("");
-      setConference("");
+        const newPresentation = await response.json();
+        console.log(newPresentation);
+        setPresenterName("");
+        setPresenterEmail("");
+        setCompanyName("");
+        setTitle("");
+        setSynopsis("");
+        setConference("");
     }
   }
 

@@ -49,7 +49,7 @@ function LocationForm( ) {
         const response = await fetch(locationUrl, fetchConfig);
         if (response.ok) {
           const newLocation = await response.json();
-
+          console.log(newLocation);
           setName('');
           setRoomCount('');
           setCity('');
