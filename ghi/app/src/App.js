@@ -1,3 +1,4 @@
+import MainPage from './MainPage';
 import Nav from './Nav';
 import AttendeesList from './AttendeesList';
 import LocationForm from './LocationForm';
@@ -14,15 +15,14 @@ function App(props) {
     return (
       <BrowserRouter>
           <Nav />
-          <div className="container">
             <Routes>
+              <Route index element={<MainPage />} />
               <Route path="conferences/new" element={<ConferenceForm />} />
               <Route path="attendees/new" element={<AttendConferenceForm />} />
               <Route path="locations/new" element={<LocationForm />} />
               <Route path="presentations/new" element={<PresentationForm />} />
               <Route path="attendees" element={<AttendeesList attendees={props.attendees}/>} />
             </Routes>
-          </div>
       </BrowserRouter>
     );
 }
