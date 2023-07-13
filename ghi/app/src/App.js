@@ -1,10 +1,10 @@
-import MainPage from './MainPage';
-import Nav from './Nav';
-import AttendeesList from './AttendeesList';
-import LocationForm from './LocationForm';
-import ConferenceForm from './ConferenceForm';
-import AttendConferenceForm from './AttendConferenceForm';
-import PresentationForm from './PresentationForm';
+import MainPage from './components/pages/MainPage';
+import Nav from './components/navbar/Nav';
+import AttendeesList from './components/lists/AttendeesList';
+import LocationForm from './components/forms/LocationForm';
+import ConferenceForm from './components/forms/ConferenceForm';
+import AttendConferenceForm from './components/forms/AttendConferenceForm';
+import PresentationForm from './components/forms/PresentationForm';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 
